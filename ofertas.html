@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce Básico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="main-navigation">
+            <h1 class="store-title">Mi Tienda</h1>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="ofertas.html">Ofertas</a></li>
+                <li><a href="mi_cuenta.html">Mi Cuenta</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Ofertas del Mes</h1>
+        <div class="products" id="ofertas">
+            <!-- Productos en oferta se agregarán aquí dinámicamente -->
+        </div>
+    </main>
+    <div class="cart-modal" id="cart-modal">
+        <h2>Carrito de Compras</h2>
+        <ul id="cart-items"></ul>
+        <button id="close-cart">Cerrar</button>
+    </div>
+    <section id="contacto">
+        <div class="info-container">
+            <div class="contact-info">
+                <div class="contact-box">
+                    <h2>Contacto y Ubicación</h2>
+                    <p><strong>Teléfono:</strong> +123 456 789</p>
+                    <p><strong>Email:</strong> contacto@mitienda.com</p>
+                    <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
+                </div>
+            </div>
+            <div class="payment-info">
+                <div class="payment-box">
+                    <h1>Envios a toda Guatemala</h1>
+                    <h3>Métodos de Pago</h3>
+                    <p>
+                        <i class="fa fa-cc-visa" style="font-size:44px"></i> 
+                        <i class="fa fa-cc-mastercard" style="font-size:44px"></i> 
+                        <i class="fa fa-cc-paypal"style="font-size:44px"></i>
+                    </p>
+                    <div class="social-buttons ml-3">
+                        <a href="https://wa.me/yourphonenumber" target="_blank"><i class="fa fa-whatsapp" style="font-size:24px"></i></a>
+                        <a href="https://www.facebook.com/yourpage" target="_blank"><i class="fa fa-facebook" style="font-size:24px"></i></a>
+                    </div>
+
+                  </div>
+            </div>
+        </div>
+       
+        <div class="map-container">
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15727.13539401404!2d-90.05886566036014!3d14.222833120498735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858845095ffc7265%3A0x9000c1ce4476a54a!2sGuazacap%C3%A1n!5e0!3m2!1sen!2sgt!4v1621675655268!5m2!1sen!2sgt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Start -->
+    <footer>
+        <p class="mb-2 text-white">Copyright &copy; <a class="font-weight-bold" href="#">Gerson Batun</a>. Todos los derechos reservados.</a></p>
+    </footer>
+<!-- Footer End -->
+    
+    <script src="js/ofertas.js"></script>
+</body>
+</html>

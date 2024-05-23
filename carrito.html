@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce Básico</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="main-navigation">
+            <h1 class="store-title">Mi Tienda</h1>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="ofertas.html">Ofertas</a></li>
+                <li><a href="mi_cuenta.html">Mi Cuenta</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="cart-container">
+        <h2>Carrito de Compras</h2>
+        <div class="cart-items">
+            <!-- Aquí puedes mostrar los elementos del carrito -->
+            <div class="cart-item">
+                <p>Producto 1 - $10.00</p>
+            </div>
+            <div class="cart-item">
+                <p>Producto 2 - $15.00</p>
+            </div>
+        </div>
+        <div class="cart-total">
+            <h3>Total:</h3>
+            <p>$25.00</p>
+        </div>
+        <button onclick="checkout()">Realizar Compra</button>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
