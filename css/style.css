@@ -1,23 +1,130 @@
+/* =========================================================
+   Mi Tienda - style.css
+   ========================================================= */
+
+/* ---------- Variables ---------- */
+:root {
+    --color-primario: #5585ff;
+    --color-primario-oscuro: #0c0093;
+    --color-acento: #1e62b0;
+    --color-acento-claro: #cad8fb;
+    --color-boton: #007bff;
+    --color-boton-hover: #0056b3;
+    --color-texto: #333;
+    --color-texto-suave: #666;
+    --color-borde: #ccc;
+    --color-fondo-claro: #f9f9f9;
+    --blanco: #fff;
+
+    --radio: 5px;
+    --radio-grande: 20px;
+    --sombra: 0 0 15px rgba(0, 0, 0, 0.1);
+    --transicion: 0.3s ease;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    color: var(--color-texto);
+    line-height: 1.5;
 }
 
-/* Estilos para el menú de navegación */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+address {
+    font-style: normal;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid #19afe1;
+    outline-offset: 2px;
+}
+
+/* Texto solo para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Enlace "Saltar al contenido" (visible solo con teclado) */
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    padding: 0.5rem 1rem;
+    background: #000;
+    color: var(--blanco);
+    z-index: 10000;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
+
+/* ---------- Botones (unificados) ---------- */
+button {
+    background-color: var(--color-boton);
+    color: var(--blanco);
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radio);
+    cursor: pointer;
+    font: inherit;
+    transition: background-color var(--transicion);
+}
+
+button:hover {
+    background-color: var(--color-boton-hover);
+}
+
+/* ---------- Navegación ---------- */
 .main-navigation {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    background: linear-gradient(to right, #5585ff, #0c0093);
+    background: linear-gradient(to right, var(--color-primario), var(--color-primario-oscuro));
     padding: 10px 20px;
 }
 
 .store-title {
-    color: #fff;
+    color: var(--blanco);
     margin: 0;
     font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    padding: 5px 10px;
+    font-size: 1.5rem;
+}
+
+.menu-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .main-navigation ul {
@@ -32,106 +139,115 @@ body {
 }
 
 .main-navigation ul li a {
-    color: #fff;
+    display: inline-block;
+    color: var(--blanco);
     text-decoration: none;
     padding: 10px 15px;
     background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: var(--radio);
+    transition: background-color var(--transicion);
 }
 
-.main-navigation ul li a:hover {
+.main-navigation ul li a:hover,
+.main-navigation ul li a[aria-current="page"] {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
-/* Estilos para la sección de bienvenida */
+/* ---------- Bienvenida ---------- */
 .welcome-section {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-color: #f9f9f9;
-    height: 100vh; /* Ocupa el tamaño completo de la pantalla */
+    gap: 2rem;
+    background-color: var(--color-fondo-claro);
+    min-height: calc(100vh - 64px); /* pantalla completa menos el menú */
     padding: 2rem;
-    flex-wrap: wrap;
 }
 
 .welcome-text {
     max-width: 50%;
 }
 
-.welcome-text h2 {
+.welcome-text h1 {
     font-size: 36px;
-    margin-bottom: 20px;
-    color: #333;
+    margin: 0 0 20px;
+    color: var(--color-texto);
 }
 
 .welcome-text p {
     font-size: 18px;
     margin-bottom: 30px;
-    color: #666;
+    color: var(--color-texto-suave);
 }
 
 .cta-button {
     display: inline-block;
     padding: 15px 30px;
     font-size: 18px;
-    color: #fff;
-    background-color: #5585ff;
-    border: none;
-    border-radius: 5px;
+    color: var(--blanco);
+    background-color: var(--color-primario);
+    border-radius: var(--radio);
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transicion);
 }
 
 .cta-button:hover {
-    background-color: #0c0093;
+    background-color: var(--color-primario-oscuro);
 }
 
 .welcome-image {
     max-width: 45%;
-    margin: 0 auto;
 }
 
 .welcome-image img {
+    display: block;
     width: 100%;
-    height: auto;
     border-radius: 10px;
 }
 
-/* Estilos para los productos */
+/* ---------- Productos ---------- */
+#productos h2 {
+    text-align: center;
+    margin: 2rem 0 1rem;
+    font-size: 24px;
+    color: var(--color-texto);
+}
+
 .products {
     background: linear-gradient(to right, #e1e1df, #eaeaea);
     display: flex;
     flex-wrap: wrap;
-    padding: 1rem;
     justify-content: center;
+    padding: 1rem;
 }
 
 .product {
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-borde);
+    background-color: var(--blanco);
     margin: 0.5rem;
     padding: 1rem;
-    width: calc(25% - 1rem); /* 25% del ancho menos márgenes */
-    box-sizing: border-box;
+    width: calc(25% - 1rem);
     text-align: center;
+    border-radius: var(--radio);
 }
 
-.product img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Estilos para el modal del carrito */
+/* ---------- Modal del carrito ---------- */
 .cart-modal {
-    display: none;
+    display: none; /* script.js lo muestra */
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
-    border: 1px solid #ccc;
+    width: min(90%, 420px);
+    max-height: 80vh;
+    overflow-y: auto;
+    background-color: var(--blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
     padding: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
 }
 
 .cart-modal h2 {
@@ -147,71 +263,113 @@ body {
     margin-bottom: 0.5rem;
 }
 
-button {
-    padding: 0.5rem 1rem;
-    cursor: pointer;
+/* ---------- Imagen expandida ---------- */
+.expanded {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    z-index: 9999;
+    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-main h2 {
-    text-align: center;
-    margin: 2rem 0 1rem;
-    font-size: 24px;
-    color: #333;
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    color: var(--blanco);
+    font-size: 20px;
+    z-index: 9999;
 }
 
-/* Estilos para la sección de Contacto y Ubicación */
+.close-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Contacto y ubicación ---------- */
 #contacto {
-    background: radial-gradient(circle at center, #cad8fb, #1e62b0);
+    background: radial-gradient(circle at center, var(--color-acento-claro), var(--color-acento));
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 30px;
     padding: 50px;
 }
 
 .info-container {
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
-.contact-info, .payment-info {
+.contact-info,
+.payment-info {
     width: 100%;
     margin-bottom: 20px;
 }
 
-.contact-box, .payment-box {
+.contact-box,
+.payment-box {
     background-color: rgba(255, 255, 255, 0.5);
-    padding: 70px;
-    border-radius: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    border-radius: var(--radio-grande);
+    box-shadow: var(--sombra);
 }
 
-.contact-box h2, .payment-box h2 {
+.contact-box h2,
+.payment-box h2 {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
 }
 
-.contact-box p, .payment-box p {
-    margin-bottom: 10px;
+.contact-box p,
+.payment-box p {
+    margin: 0 0 10px;
+}
+
+.contact-box a {
+    color: var(--color-primario-oscuro);
+}
+
+.payment-icons {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    margin: 0 0 1rem;
+}
+
+.payment-icons .fa {
+    font-size: 44px;
 }
 
 .social-buttons {
     display: flex;
-    justify-content: left;
+    gap: 10px;
     margin-top: 20px;
 }
 
 .social-buttons a {
     display: inline-block;
-    margin: 0 10px;
-    background-color: #ffffff;
+    background-color: var(--blanco);
     color: #3700ff;
     padding: 15px 20px;
     border-radius: 8px;
     text-decoration: none;
+    transition: background-color var(--transicion), color var(--transicion);
 }
 
 .social-buttons a:hover {
-    background-color: #0056b3;
+    background-color: var(--color-boton-hover);
+    color: var(--blanco);
+}
+
+.social-buttons .fa {
+    font-size: 24px;
 }
 
 .map-container {
@@ -221,46 +379,22 @@ main h2 {
 .map {
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--sombra);
 }
 
 .map iframe {
+    display: block;
     width: 100%;
     height: 700px;
     border: 0;
 }
 
-/* Estilos para el modal expandido */
-.expanded {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 90%; /* Ajusta el ancho máximo */
-    max-height: 90%; /* Ajusta la altura máxima */
-    z-index: 9999;
-    object-fit: contain; /* Para mantener la proporción de la imagen */
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
-}
-
-/* Estilos para el botón de cierre del modal */
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 9999; /* Asegúrate de que el botón esté en la parte superior */
-}
-
+/* ---------- Login ---------- */
 .login-container {
-    background-color: #fff;
+    background-color: var(--blanco);
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radio);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
@@ -276,28 +410,17 @@ input[type="email"],
 input[type="password"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    font: inherit;
 }
 
-button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
+/* ---------- Página de carrito ---------- */
 .cart-container {
-    background-color: #fff;
+    background-color: var(--blanco);
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radio);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .cart-items {
@@ -305,7 +428,7 @@ button:hover {
 }
 
 .cart-item {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--color-borde);
     padding: 10px 0;
 }
 
@@ -316,54 +439,109 @@ button:hover {
     margin-bottom: 20px;
 }
 
-button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
+/* ---------- Footer ---------- */
 footer {
     text-align: center;
-    background: radial-gradient(circle at center, #cad8fb, #1e62b0);
-    padding: 20px; /* Puedes ajustar el relleno según sea necesario */
+    background: radial-gradient(circle at center, var(--color-acento-claro), var(--color-acento));
+    padding: 20px;
 }
-.expanded {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 90%; /* Ajusta el ancho máximo */
-    max-height: 90%; /* Ajusta la altura máxima */
-    z-index: 9999;
-    object-fit: contain; /* Para mantener la proporción de la imagen */
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+
+footer p {
+    margin: 0;
 }
-/* Responsivo */
+
+footer a {
+    color: var(--color-primario-oscuro);
+    font-weight: bold;
+}
+
+/* =========================================================
+   Responsivo
+   ========================================================= */
 @media (max-width: 1200px) {
     .product {
-        width: calc(33.33% - 1rem); /* 33.33% del ancho menos márgenes */
+        width: calc(33.33% - 1rem);
     }
 }
 
 @media (max-width: 900px) {
     .product {
-        width: calc(50% - 1rem); /* 50% del ancho menos márgenes */
+        width: calc(50% - 1rem);
+    }
+
+    /* Contacto y mapa uno debajo del otro */
+    #contacto {
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+
+    .info-container,
+    .map-container {
+        width: 100%;
+    }
+
+    .map iframe {
+        height: 400px;
+    }
+
+    /* Bienvenida en una sola columna */
+    .welcome-text,
+    .welcome-image {
+        max-width: 100%;
+    }
+
+    .welcome-text {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-navigation ul {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .main-navigation ul.abierto {
+        display: flex;
+    }
+
+    .main-navigation ul li {
+        margin: 5px 0 0;
+    }
+
+    .main-navigation ul li a {
+        display: block;
     }
 }
 
 @media (max-width: 600px) {
     .product {
-        width: calc(100% - 1rem); /* 100% del ancho menos márgenes */
+        width: calc(100% - 1rem);
     }
 
-    .map-container iframe {
-        height: 300px; /* Ajusta la altura del mapa en dispositivos móviles */
+    .welcome-text h1 {
+        font-size: 28px;
+    }
+
+    .contact-box,
+    .payment-box {
+        padding: 25px;
+    }
+
+    .map iframe {
+        height: 300px;
+    }
+}
+
+/* Menos animaciones para quien lo prefiera */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
     }
 }
